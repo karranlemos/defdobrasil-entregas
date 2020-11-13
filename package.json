@@ -1,0 +1,26 @@
+{
+  "name": "defdobrasil",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karranlemos/defdobrasil-entregas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karranlemos/defdobrasil-entregas/issues"
+  },
+  "homepage": "https://github.com/karranlemos/defdobrasil-entregas#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
