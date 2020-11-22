@@ -2,7 +2,7 @@ import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import './App.css';
 
 import Entrega from './components/pages/Entrega/Entrega';
-import Entregas from './components/pages/Entregas';
+import Entregas from './components/pages/Entregas/Entregas';
 import Sobre from './components/pages/Sobre';
 import Error from './components/pages/Error';
 
