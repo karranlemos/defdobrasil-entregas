@@ -10,3 +10,44 @@
 
     min-height: 100vh;
 }
+
+
+
+.btn {
+    min-height: 60px;
+    min-width: 200px;
+    padding: 15px 25px;
+
+    background-color: rgb(70, 70, 70);
+    color: white;
+
+    outline: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: rgb(80, 80, 80);
+}
+
+
+
+.message-box {
+    width: 100%;
+    min-height: 100px;
+
+    margin-top: 15px;
+    padding: 15px;
+
+    background-color: #966e4c;
+    color: #fff;
+}
+
+.message-box.success {
+    background-color: #4c965e;
+}
+
+.message-box.failure {
+    background-color: #964c4c;
+}

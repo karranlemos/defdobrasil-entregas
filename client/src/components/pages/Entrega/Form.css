@@ -1,0 +1,22 @@
+.form-container form .form-item {
+    margin: 25px 0 10px 0;
+}
+
+.form-container form .form-item h2 {
+    margin: 10px 0 10px 0;
+    font-size: 22px;
+}
+
+.form-container form .form-item input[type=text], .form-container form .form-item input[type=date] {
+    width: 100%;
+    padding: 12px 15px;
+
+    outline: none;
+    border: none;
+
+    background-color: rgb(215, 215, 215);
+}
+
+.form-container form .form-item button[type=submit] {
+    width: 100%;
+}

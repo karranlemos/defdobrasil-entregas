@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Form.css';
 
 const REAL_SUBMIT_PATH = '/api/entrega';
 
@@ -24,44 +24,45 @@ export default class Form extends React.Component {
             <div className="form-container">
                 <form action="" method="post" onSubmit={this.onSubmit}>
                     <div className="form-item">
+                        <h2>Nome do Cliente</h2>
                         <input
                             type="text"
                             name="nomeCliente"
-                            placeholder="Nome do cliente"
                             required
                             onChange={this.onChange}
                         />
                     </div>
                     <div className="form-item">
-                        <label>Data de entrega
-                            <input
-                                type="date"
-                                name="dataEntrega"
-                                required
-                                onChange={this.onChange}
-                            />
-                        </label>
+                        <h2>Data de entrega</h2>
+                        <input
+                            type="date"
+                            name="dataEntrega"
+                            required
+                            onChange={this.onChange}
+                        />
                     </div>
                     <div className="form-item">
+                        <h2>Endereço de partida</h2>
                         <input
                             type="text"
                             name="enderecoPartida"
-                            placeholder="Endereço de partida"
                             required
                             onChange={this.onChange}
                         />
                     </div>
                     <div className="form-item">
+                        <h2>Endereço de chegada</h2>
                         <input
                             type="text"
                             name="enderecoChegada"
-                            placeholder="Endereço de chegada"
                             required
                             onChange={this.onChange}
                         />
                     </div>
 
-                    <button type="submit">Adicionar Entrega</button>
+                    <div className="form-item">
+                        <button type="submit" className="btn">Efetuar Entrega</button>
+                    </div>
                 </form>
                 {messageBox}
             </div>

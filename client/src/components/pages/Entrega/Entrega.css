@@ -1,0 +1,8 @@
+.caixa-pequena {
+    max-width: 400px;
+    margin: 50px auto;
+}
+
+.caixa-pequena h1 {
+    text-align: center;
+}
