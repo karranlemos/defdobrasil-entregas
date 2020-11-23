@@ -6,12 +6,14 @@ const API_ROUTE = '/api/entregas';
 
 export default class TablePages extends React.Component {
     state = {
+        firstTime: true,
         currentPage: 0,
 
         totalPages: 0,
         totalEntries: 0,
-        itemsPerPage: 10,
         lines: [],
+
+        itemsPerPage: 10,
     };
 
     componentDidMount() {
@@ -71,6 +73,10 @@ export default class TablePages extends React.Component {
 
 
     getPage = (newPage=1) => {
+        if (this.state.totalPages <= 0 && !this.state.firstTime) {
+            // TODO show error message
+            return;
+        }
         if (newPage < 1 || newPage > Math.max(this.state.totalPages, 1)) {
             // TODO show error message
             return;
@@ -105,9 +111,11 @@ export default class TablePages extends React.Component {
 
     fillState = (json) => {
         this.setState({
+            firstTime: false,
+            currentPage: json.currentPage,
+
             totalPages: json.totalPages,
             totalEntries: json.totalEntries,
-            currentPage: json.currentPage,
             lines: json.lines
         });
     }

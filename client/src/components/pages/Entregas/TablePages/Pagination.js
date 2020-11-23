@@ -14,7 +14,7 @@ export default class Pagination extends React.Component {
         const leftArrowButton = (buttons.leftArrow ? this.createButton('<', totalPages) : null);
         const rightArrowButton = (buttons.rightArrow ? this.createButton('>', totalPages) : null);
 
-        const numbersRange = Array.from(new Array(totalPages), (x, i) => (i+buttons.from));
+        const numbersRange = Array.from(new Array(buttons.to-buttons.from+1), (x, i) => (i+buttons.from));
         const numberButtons = numbersRange.map((number) => {
             const currentCheck = (currentPage === number);
             return this.createButton(number, totalPages, currentCheck);
@@ -40,9 +40,12 @@ export default class Pagination extends React.Component {
     createButton = (value, totalPages, current=false) => {
         var classNames = 'pagination-button';
 
+        var eventValue = value;
+        var visibleValue = value;
+
         if (['<', '>'].includes(value)) {
             classNames += ' pagination-button-arrow';
-            value = (value === '<') ? 1 : totalPages;
+            eventValue = (value === '<') ? 1 : totalPages;
         }
         else if (current)
             classNames += ' paginaton-button-current';
@@ -50,8 +53,8 @@ export default class Pagination extends React.Component {
         return (
             <button
                 className={classNames}
-                onClick={() => this.onClickButton(value)}
-            >{value}</button>
+                onClick={() => this.onClickButton(eventValue)}
+            >{visibleValue}</button>
         );
     };
     
@@ -69,13 +72,13 @@ export default class Pagination extends React.Component {
         var leftArrow;
         var rightArrow;
 
-        if (currentPage <= LEFT_PAGES_BUTTONS+1) {
+        if (currentPage <= LEFT_PAGES_BUTTONS) {
             leftArrow = false;
             from = 1;
         }
         else {
             leftArrow = true;
-            from = currentPage - LEFT_PAGES_BUTTONS;
+            from = currentPage - (LEFT_PAGES_BUTTONS-1);
         }
 
         
@@ -89,11 +92,11 @@ export default class Pagination extends React.Component {
         }
 
         if (!leftArrow) {
-            to = Math.max(to+(LEFT_PAGES_BUTTONS-(currentPage-from)), totalPages);
+            to = Math.min(to+((LEFT_PAGES_BUTTONS-1)-(currentPage-from)), totalPages);
         }
 
         if (!rightArrow) {
-            from = Math.min(from-(RIGHT_PAGES_BUTTONS-(to-currentPage)), 1);
+            from = Math.max(from-(RIGHT_PAGES_BUTTONS-(to-currentPage)), 1);
         }
 
         return {
