@@ -1,0 +1,18 @@
+body, #root {
+    min-height: 100vh;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    font-family: var(--default-fonts);
+
+    margin: 0;
+
+    background-color: var(--bg-color);
+}
+  
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}

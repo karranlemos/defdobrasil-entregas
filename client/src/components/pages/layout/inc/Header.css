@@ -1,0 +1,99 @@
+header#header {
+    --navbar-height: 80px;
+    font-family: 'Quicksand', var(--default-fonts);
+
+    height: var(--navbar-height);
+}
+
+header#header nav#nav {
+    position: fixed;
+
+    height: var(--navbar-height);
+    width: 100%;
+
+    background-color: var(--nav-bg-color);
+    color: var(--nav-color);
+}
+
+header#header nav#nav .container {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+header#header nav#nav .container .mobile-button {
+    display: none;
+}
+
+header#header nav#nav .container .options {
+    display: flex;
+    background-color: var(--nav-bg-color);
+}
+
+header#header nav#nav .container .option {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--nav-bg-color);
+}
+
+header#header nav#nav .container .option.current-option {
+    background-color: var(--nav-bg-color-current-page);
+}
+
+header#header nav#nav a.option {
+    text-decoration: none;
+    color: var(--nav-color);
+
+    border: none;
+    outline: none;
+}
+
+header#header nav#nav a.option:hover {
+    background-color: var(--nav-bg-color-hover);
+}
+
+
+
+
+@media only screen and (max-width: 700px) {
+    header#header nav#nav .container .mobile-button {
+        display: initial;
+        width: 80px;
+        
+        background-image: url('icons/Hamburger-white.svg');
+        background-size: 25px;
+        background-repeat: no-repeat;
+        background-position: center;
+        
+        cursor: pointer;
+    }
+
+    header#header nav#nav.show .container .mobile-button {
+        background-image: url('icons/Multiplication_Sign-white.svg');
+    }
+
+    header#header nav#nav .container .options {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+
+        top: 100%;
+        right: -450px;
+
+        height: calc(100vh - var(--navbar-height));
+        max-width: 400px;
+        width: 100%;
+
+        transition: right 0.4s;
+    }
+
+    header#header nav#nav.show .container .options {
+        right: 0;
+    }
+
+    header#header nav#nav .container .options a.option {
+        justify-content: center;
+        padding: 30px;
+    }
+}
