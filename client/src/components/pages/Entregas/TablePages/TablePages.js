@@ -1,4 +1,5 @@
 import React from 'react';
+import './TablePages.css';
 
 import Pagination from './Pagination';
 
@@ -24,15 +25,18 @@ export default class TablePages extends React.Component {
         return (
             <div className="table-container">
                 <table>
-                    <tr>
-                        <th>#</th>
-                        <th>Nome</th>
-                        <th>Data de Entrega</th>
-                        <th>Ponto de Partida</th>
-                        <th>Ponto de Chegada</th>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th class="col-nome-cliente">Nome</th>
+                            <th class="col-data-entrega">Data de Entrega</th>
+                            <th class="col-endereco-partida">Ponto de Partida</th>
+                            <th class="col-endereco-chegada">Ponto de Chegada</th>
+                        </tr>
+                    </thead>
 
-                    {this.buildDataRows()}
+                    <tbody>
+                        {this.buildDataRows()}
+                    </tbody>
                 </table>
 
                 <Pagination
@@ -50,9 +54,6 @@ export default class TablePages extends React.Component {
         return this.state.lines.map((linha, i) => {
             return (
                 <tr>
-                    <td>
-                        {startLineNumber+i+1}
-                    </td>
                     <td>
                         {linha.nomeCliente}
                     </td>

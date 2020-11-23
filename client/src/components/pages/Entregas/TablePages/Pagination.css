@@ -1,0 +1,29 @@
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination .pagination-button {
+    outline: none;
+    border: none;
+
+    background-color: #111111;
+    color: white;
+
+    margin: 2px;
+    width: 50px;
+    height: 50px;
+
+    cursor: pointer;
+}
+
+.pagination .pagination-button:hover {
+    background-color: #222222;
+}
+
+.pagination .pagination-button.pagination-button-arrow {
+    
+}
+
+.pagination .pagination-button.paginaton-button-current {
+    background-color: #8b613c;
+}

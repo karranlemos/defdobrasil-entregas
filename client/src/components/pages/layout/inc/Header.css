@@ -7,6 +7,7 @@ header#header {
 
 header#header nav#nav {
     position: fixed;
+    z-index: 100001;
 
     height: var(--navbar-height);
     width: 100%;
@@ -77,6 +78,7 @@ header#header nav#nav a.option:hover {
         position: absolute;
         display: flex;
         flex-direction: column;
+        z-index: 1000;
 
         top: 100%;
         right: -450px;

@@ -1,4 +1,5 @@
 import React from 'react';
+import './Pagination.css';
 
 const MAX_PAGES_BUTTONS = 9;
 const LEFT_PAGES_BUTTONS = Math.ceil(MAX_PAGES_BUTTONS/2);
@@ -21,7 +22,7 @@ export default class Pagination extends React.Component {
         });
 
         return (
-            <div className="table-pagination">
+            <div className="pagination">
                 {leftArrowButton}
                 {numberButtons}
                 {rightArrowButton}
