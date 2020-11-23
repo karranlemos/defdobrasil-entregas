@@ -5,8 +5,7 @@ import './Header.css';
 
 const itensMenu = {
     '/entregas': 'Entregas',
-    '/entrega': 'Efetuar Entrega',
-    '/sobre': 'Sobre'
+    '/entrega': 'Efetuar Entrega'
 }
 
 export default class Header extends React.Component {
