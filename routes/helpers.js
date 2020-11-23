@@ -1,4 +1,4 @@
-module.exports = {
+const moduleHelpers = {
     checaCamposEntrega(req, res, next) {
         for (const campo of ['nomeCliente', 'dataEntrega', 'enderecoPartida', 'enderecoChegada']) {
             if (!req.body[campo])
@@ -7,6 +7,13 @@ module.exports = {
                     errorMessage: 'Todos os campos devem ser enviados...'
                 });
         }
+
+        if (!internalHelpers.checaFormatoData(req.body.dataEntrega))
+            return res.status(400).json({
+                status: 400,
+                errorMessage: "Parâmetro 'dataEntrega' tem formato ou valor inválido..."
+            });
+
         next();
     },
 
@@ -29,3 +36,21 @@ module.exports = {
         next();
     }
 };
+
+
+
+const internalHelpers = {
+    checaFormatoData(dataString) {
+        if (!/^\d\d\d\d\-\d\d-\d\d$/.test(dataString))
+            return false;
+        
+        if (isNaN(Date.parse(dataString)))
+            return false;
+
+        return true;
+    }
+}
+
+
+
+module.exports = moduleHelpers;

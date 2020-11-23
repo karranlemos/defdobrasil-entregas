@@ -10,7 +10,7 @@ class Entregas {
      * Tabela:
      * 
      * nome_cliente: varchar(128)
-     * data_entrega: datetime
+     * data_entrega: date
      * endereco_partida: varchar(256)
      * endereco_chegada: varchar(256)
      */

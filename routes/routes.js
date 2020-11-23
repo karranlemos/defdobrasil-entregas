@@ -13,8 +13,17 @@ router.post(
     '/api/entrega',
     helpers.checaCamposEntrega,
     (req, res) => {
-        // Cadastra a entrega
-        res.status(201).send();
+        entregas.addEntrega(
+            req.body.nomeCliente, req.body.dataEntrega,
+            req.body.enderecoPartida, req.body.enderecoChegada
+        ).then(() => {
+            res.status(201).send();
+        }).catch((err) => {
+            res.status(500).json({
+                status: 500,
+                errorMessage: 'Internal Server Error'
+            });
+        });
     }
 );
 

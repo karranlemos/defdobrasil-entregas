@@ -120,7 +120,6 @@ export default class Form extends React.Component {
 
     createPostString = () => {
         var postString = '';
-        console.log(this.state);
         for (const [name, value] of Object.entries(this.state.fields))
             postString += `${encodeURIComponent(name)}=${encodeURIComponent(value)}&`;
         return postString;
