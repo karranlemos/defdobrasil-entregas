@@ -11,9 +11,6 @@
     border-collapse: collapse;
     width: 100%;
     max-width: 100%;
-    
-    word-wrap: break-word;
-    overflow-wrap: break-word; 
 }
 
 .table-container table thead {
@@ -29,6 +26,7 @@
 
 .table-container table td, .table-container table th {
     padding: 20px 25px;
+    word-wrap: normal;
 }
 
 .table-container table tr:nth-child(odd) {
@@ -56,12 +54,4 @@
 .table-container table th.col-endereco-partida,
 .table-container table th.col-endereco-chegada {
     width: 25%;
-}
-
-
-
-@media only screen and (max-width: 600px) {
-    .table-container table {
-        table-layout: fixed;
-    }
 }
