@@ -24,17 +24,29 @@ class Entregas {
         return new Promise((resolve, reject) => {
             const sql =
                 `SELECT nome_cliente, data_entrega, endereco_partida, endereco_chegada FROM ?? `+
-                `LIMIT ? OFFSET ? ORDER BY id`
+                `ORDER BY id DESC LIMIT ? OFFSET ?`
             ;
             const params = [table, limit, offset];
 
             this.db.query(
                 sql,
                 params,
-                (err, rows) => {
+                (err, rowsData) => {
                     if (err) 
                         return reject(err);
-                    return resolve(rows);
+                    
+                    this.db.query(
+                        `SELECT COUNT(*) AS counter FROM ??`,
+                        [table],
+                        (err, rowsCounter) => {
+                            if (err)
+                                return reject(err);
+                            resolve({
+                                rows: rowsData,
+                                total: rowsCounter[0].counter
+                            });
+                        }
+                    );
                 }
             );
         });

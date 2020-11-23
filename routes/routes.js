@@ -34,196 +34,41 @@ router.get(
         const page = parseInt(req.query.page);
         const limit = parseInt(req.query.limit);
 
-        const linhas = [
-            {
-                nomeCliente: 'João da Silva',
-                dataEntrega: '2020-01-01',
-                enderecoPartida: '312131231312',
-                enderecoChegada: '312131231312'
-            },
-            {
-                nomeCliente: 'Mário da Silva',
-                dataEntrega: '2020-01-10',
-                enderecoPartida: '5112515231312',
-                enderecoChegada: '5112515231312'
-            },
-            {
-                nomeCliente: 'Dom Pedro II',
-                dataEntrega: '2020-01-09',
-                enderecoPartida: '123213231312',
-                enderecoChegada: '121111231312'
-            },
-            {
-                nomeCliente: 'João da Silva',
-                dataEntrega: '2020-01-01',
-                enderecoPartida: '312131231312',
-                enderecoChegada: '312131231312'
-            },
-            {
-                nomeCliente: 'Mário da Silva',
-                dataEntrega: '2020-01-10',
-                enderecoPartida: '5112515231312',
-                enderecoChegada: '5112515231312'
-            },
-            {
-                nomeCliente: 'Dom Pedro II',
-                dataEntrega: '2020-01-09',
-                enderecoPartida: '123213231312',
-                enderecoChegada: '121111231312'
-            },
-            {
-                nomeCliente: 'João da Silva',
-                dataEntrega: '2020-01-01',
-                enderecoPartida: '312131231312',
-                enderecoChegada: '312131231312'
-            },
-            {
-                nomeCliente: 'Mário da Silva',
-                dataEntrega: '2020-01-10',
-                enderecoPartida: '5112515231312',
-                enderecoChegada: '5112515231312'
-            },
-            {
-                nomeCliente: 'Dom Pedro II',
-                dataEntrega: '2020-01-09',
-                enderecoPartida: '123213231312',
-                enderecoChegada: '121111231312'
-            },
-            {
-                nomeCliente: 'João da Silva',
-                dataEntrega: '2020-01-01',
-                enderecoPartida: '312131231312',
-                enderecoChegada: '312131231312'
-            },
-            {
-                nomeCliente: 'Mário da Silva',
-                dataEntrega: '2020-01-10',
-                enderecoPartida: '5112515231312',
-                enderecoChegada: '5112515231312'
-            },
-            {
-                nomeCliente: 'Dom Pedro II',
-                dataEntrega: '2020-01-09',
-                enderecoPartida: '123213231312',
-                enderecoChegada: '121111231312'
-            },
-            {
-                nomeCliente: 'João da Silva',
-                dataEntrega: '2020-01-01',
-                enderecoPartida: '312131231312',
-                enderecoChegada: '312131231312'
-            },
-            {
-                nomeCliente: 'Mário da Silva',
-                dataEntrega: '2020-01-10',
-                enderecoPartida: '5112515231312',
-                enderecoChegada: '5112515231312'
-            },
-            {
-                nomeCliente: 'Dom Pedro II',
-                dataEntrega: '2020-01-09',
-                enderecoPartida: '123213231312',
-                enderecoChegada: '121111231312'
-            },
-            {
-                nomeCliente: 'João da Silva',
-                dataEntrega: '2020-01-01',
-                enderecoPartida: '312131231312',
-                enderecoChegada: '312131231312'
-            },
-            {
-                nomeCliente: 'Mário da Silva',
-                dataEntrega: '2020-01-10',
-                enderecoPartida: '5112515231312',
-                enderecoChegada: '5112515231312'
-            },
-            {
-                nomeCliente: 'Dom Pedro II',
-                dataEntrega: '2020-01-09',
-                enderecoPartida: '123213231312',
-                enderecoChegada: '121111231312'
-            },
-            {
-                nomeCliente: 'João da Silva',
-                dataEntrega: '2020-01-01',
-                enderecoPartida: '312131231312',
-                enderecoChegada: '312131231312'
-            },
-            {
-                nomeCliente: 'Mário da Silva',
-                dataEntrega: '2020-01-10',
-                enderecoPartida: '5112515231312',
-                enderecoChegada: '5112515231312'
-            },
-            {
-                nomeCliente: 'Dom Pedro II',
-                dataEntrega: '2020-01-09',
-                enderecoPartida: '123213231312',
-                enderecoChegada: '121111231312'
-            },
-            {
-                nomeCliente: 'João da Silva',
-                dataEntrega: '2020-01-01',
-                enderecoPartida: '312131231312',
-                enderecoChegada: '312131231312'
-            },
-            {
-                nomeCliente: 'Mário da Silva',
-                dataEntrega: '2020-01-10',
-                enderecoPartida: '5112515231312',
-                enderecoChegada: '5112515231312'
-            },
-            {
-                nomeCliente: 'Dom Pedro II',
-                dataEntrega: '2020-01-09',
-                enderecoPartida: '123213231312',
-                enderecoChegada: '121111231312'
-            },
-            {
-                nomeCliente: 'João da Silva',
-                dataEntrega: '2020-01-01',
-                enderecoPartida: '312131231312',
-                enderecoChegada: '312131231312'
-            },
-            {
-                nomeCliente: 'Mário da Silva',
-                dataEntrega: '2020-01-10',
-                enderecoPartida: '5112515231312',
-                enderecoChegada: '5112515231312'
-            },
-            {
-                nomeCliente: 'Dom Pedro II',
-                dataEntrega: '2020-01-09',
-                enderecoPartida: '123213231312',
-                enderecoChegada: '121111231312'
-            },
-            {
-                nomeCliente: 'João da Silva',
-                dataEntrega: '2020-01-01',
-                enderecoPartida: '312131231312',
-                enderecoChegada: '312131231312'
-            },
-        ];
+        const offset = (page-1) * limit;
 
+        entregas.getEntregas(limit, offset)
+            .then(data => {
+                const totalEntries = data.total;
+                const totalPages = Math.ceil(totalEntries/limit);
 
-        const totalEntries = linhas.length;
-        const totalPages = Math.ceil(totalEntries/limit);
+                if (page > totalPages && data.rows.length === 0)
+                    return res.status(404).json({
+                        status: 404,
+                        errorMessage: `Desired page ${page} greater than the number of pages ${totalPages}...`
+                    });
+                
+                const linhasFinais = data.rows.map((linhaEntrega => {
+                    return {
+                        nomeCliente: linhaEntrega.nome_cliente,
+                        dataEntrega: helpers.criaStringData(linhaEntrega.data_entrega),
+                        enderecoPartida: linhaEntrega.endereco_partida,
+                        enderecoChegada: linhaEntrega.endereco_chegada
+                    };
+                }));
 
-        if (page > totalPages)
-            return res.status(404).json({
-                status: 404,
-                errorMessage: `Desired page ${page} greater than the number of pages ${totalPages}...`
-            });
+                console.log(linhasFinais);
 
-        const linhasEnviadas = linhas.slice((page-1) * limit, page*limit);
-
-
-        return res.status(200).json({
-            currentPage: page,
-            totalEntries: totalEntries,
-            totalPages: totalPages,
-            lines: linhasEnviadas
-        });
+                return res.status(200).json({
+                    currentPage: page,
+                    totalEntries: totalEntries,
+                    totalPages: totalPages,
+                    lines: linhasFinais
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        ;
     }
 );
 

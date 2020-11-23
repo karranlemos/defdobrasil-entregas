@@ -34,6 +34,15 @@ const moduleHelpers = {
             });
         
         next();
+    },
+
+
+
+    criaStringData(data) {
+        const year = String(data.getFullYear()).padStart(4, '0');
+        const month = String(data.getMonth()+1).padStart(2, '0');
+        const day = String(data.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
     }
 };
 
