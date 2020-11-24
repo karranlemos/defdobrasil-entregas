@@ -14,6 +14,7 @@
 }
 
 .table-general-container .table-tag-container {
+    min-width: 100%;
     max-width: calc(100vw - 20px);
     overflow-x: auto;
 }
