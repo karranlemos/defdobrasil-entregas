@@ -3,7 +3,7 @@ import './main-css/App.css';
 
 import Entrega from './pages/Entrega/Entrega';
 import Entregas from './pages/Entregas/Entregas';
-import Error from './pages/Error';
+import Error from './pages/Error/Error';
 
 function App() {
   return (
