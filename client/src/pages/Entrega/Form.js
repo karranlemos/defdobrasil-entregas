@@ -1,6 +1,8 @@
 import React from 'react';
 import './Form.css';
 
+import MessageBox from '../../components/MessageBox/MessageBox';
+
 const REAL_SUBMIT_PATH = '/api/entrega';
 
 export default class Form extends React.Component {
@@ -10,15 +12,7 @@ export default class Form extends React.Component {
     };
 
     render() {
-        var messageBox = null;
-        switch (this.state.status) {
-            case 'sent':
-                messageBox = this.createSuccessBox('Mensagem enviada com sucesso!');
-                break;
-            case 'error':
-                messageBox = this.createFailureBox(this.state.errorMessage);
-                break;
-        }
+        var messageBox = this.createMessageBox();
         
         return (
             <div className="form-container">
@@ -126,23 +120,25 @@ export default class Form extends React.Component {
         return postString;
     };
 
-    createSuccessBox = (message) => {
-        return this.createMessageBox(message, 'success');
-    }
 
-    createFailureBox = (message) => {
-        return this.createMessageBox(message, 'failure');
-    }
 
-    createMessageBox = (message, type='neutral') => {
-        if (!['success', 'failure', 'neutral'].includes(type))
-            throw "Parameter type must be 'success', 'failure' or 'neutral'.";
-        
-        if (type === 'neutral')
-            type = '';
-        
-        return (
-            <div className={`message-box ${type}`}>{message}</div>
-        );
+    createMessageBox = () => {
+        var message;
+        var type;
+        switch (this.state.status) {
+            case 'sent':
+                message = 'Mensagem enviada com sucesso!';
+                type = 'success';
+                break;
+            case 'error':
+                message = this.state.errorMessage;
+                type = 'failure';
+                break;
+
+            default:
+                return null;
+        }
+
+        return <MessageBox type={type} message={message}/>;
     }
 }

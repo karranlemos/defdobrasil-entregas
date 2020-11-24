@@ -46,24 +46,3 @@ a.anchor {
 .btn:hover {
     background-color: rgb(80, 80, 80);
 }
-
-
-
-.message-box {
-    width: 100%;
-    min-height: 50px;
-
-    margin-top: 15px;
-    padding: 15px;
-
-    background-color: #966e4c;
-    color: #fff;
-}
-
-.message-box.success {
-    background-color: #4c965e;
-}
-
-.message-box.failure {
-    background-color: #964c4c;
-}
