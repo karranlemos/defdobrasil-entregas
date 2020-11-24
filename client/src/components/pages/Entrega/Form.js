@@ -22,6 +22,7 @@ export default class Form extends React.Component {
         
         return (
             <div className="form-container">
+                {messageBox}
                 <form action="" method="post" onSubmit={this.onSubmit}>
                     <div className="form-item">
                         <h2>Nome do Cliente</h2>
@@ -64,7 +65,6 @@ export default class Form extends React.Component {
                         <button type="submit" className="btn">Efetuar Entrega</button>
                     </div>
                 </form>
-                {messageBox}
             </div>
         );
     }

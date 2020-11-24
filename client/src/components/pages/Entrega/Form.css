@@ -1,5 +1,5 @@
 .form-container form .form-item {
-    margin: 25px 0 10px 0;
+    margin: 25px 10px 10px 10px;
 }
 
 .form-container form .form-item h2 {
@@ -19,4 +19,12 @@
 
 .form-container form .form-item button[type=submit] {
     width: 100%;
+}
+
+
+
+@media only screen and (max-width: 400px) {
+    .form-container form .form-item h2 {
+        text-align: center;
+    }
 }
