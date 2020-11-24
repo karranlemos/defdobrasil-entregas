@@ -53,7 +53,7 @@ export default class TablePages extends React.Component {
                 <Pagination
                     totalPages={this.state.totalPages}
                     currentPage={this.state.currentPage}
-                    getPageCallback={this.getPage}
+                    getPageCallback={this.getPagePagination}
                 />
                 {modal}
             </div>
@@ -121,6 +121,16 @@ export default class TablePages extends React.Component {
 
 
 
+    getPagePagination = (newPage) => {
+        // A página não é rolada para cima sem o setTimeout.
+        setTimeout(
+            () => window.scrollTo(0, 0),
+            50
+        );
+
+        this.getPage(newPage);
+    }
+
     getPage = (newPage=1) => {
         if (this.state.totalPages <= 0 && !this.state.firstTime) {
             // TODO show error message
@@ -151,14 +161,14 @@ export default class TablePages extends React.Component {
                 return;
             }
             
-            this.fillState(json);
+            this.trocarPagina(json);
         });
 
         request.open('get', `${API_ROUTE}?page=${newPage}&limit=${this.state.itemsPerPage}`);
         request.send();
     }
 
-    fillState = (json) => {
+    trocarPagina = (json) => {
         this.setState({
             firstTime: false,
             currentPage: json.currentPage,

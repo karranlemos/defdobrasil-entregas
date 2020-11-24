@@ -52,10 +52,10 @@ export default class Pagination extends React.Component {
             classNames += ' paginaton-button-current';
         
         return (
-            <button
+            <div
                 className={classNames}
                 onClick={() => this.onClickButton(eventValue)}
-            >{visibleValue}</button>
+            >{visibleValue}</div>
         );
     };
     
