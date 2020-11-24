@@ -1,4 +1,4 @@
-# defdobrasil-entregas
+# Entregas Já
 
 Site protótipo para guardar as entregas feitas para a empresa fictícia "Entregas Já".
 
