@@ -29,21 +29,23 @@ export default class TablePages extends React.Component {
     render() {
         const modal = this.generateModal();
         return (
-            <div className="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th className="col-nome-cliente">Nome</th>
-                            <th className="col-data-entrega">Data de Entrega</th>
-                            <th className="col-endereco-partida">Ponto de Partida</th>
-                            <th className="col-endereco-chegada">Ponto de Chegada</th>
-                        </tr>
-                    </thead>
+            <div className="table-general-container">
+                <div className="table-tag-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th className="col-nome-cliente">Nome</th>
+                                <th className="col-data-entrega">Data de Entrega</th>
+                                <th className="col-endereco-partida">Ponto de Partida</th>
+                                <th className="col-endereco-chegada">Ponto de Chegada</th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                        {this.buildDataRows()}
-                    </tbody>
-                </table>
+                        <tbody>
+                            {this.buildDataRows()}
+                        </tbody>
+                    </table>
+                </div>
 
                 <Pagination
                     totalPages={this.state.totalPages}

@@ -1,61 +1,67 @@
-.table-container {
+.table-general-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     width: 100%;
 
     margin: 10px;
 }
 
-.table-container table {
+.table-general-container .table-tag-container {
+    max-width: calc(100vw - 20px);
+    overflow-x: auto;
+}
+
+.table-general-container table {
     border-collapse: collapse;
     width: 100%;
     max-width: 100%;
 }
 
-.table-container table thead {
+.table-general-container table thead {
     font-family: 'Quicksand', var(--default-fonts);
 }
 
-.table-container table th {
+.table-general-container table th {
     background-color: #111111;
     color: white;
     font-weight: normal;
 }
 
 
-.table-container table td, .table-container table th {
+.table-general-container table td, .table-general-container table th {
     padding: 20px 25px;
     word-wrap: normal;
 }
 
-.table-container table tr {
+.table-general-container table tr {
     cursor: pointer;
 }
 
-.table-container table tr:nth-child(odd) {
+.table-general-container table tr:nth-child(odd) {
     background-color: rgb(240, 240, 240);
 }
 
-.table-container table tr:nth-child(even) {
+.table-general-container table tr:nth-child(even) {
     background-color: rgb(220, 220, 220);
 }
 
-.table-container table tr:hover {
+.table-general-container table tr:hover {
     background-color: rgb(200, 200, 200);
 }
 
 
 
-.table-container table th.col-nome-cliente {
+.table-general-container table th.col-nome-cliente {
     width: 40%;
 }
 
-.table-container table th.col-data-entrega {
+.table-general-container table th.col-data-entrega {
     width: 10%;
 }
 
-.table-container table th.col-endereco-partida,
-.table-container table th.col-endereco-chegada {
+.table-general-container table th.col-endereco-partida,
+.table-general-container table th.col-endereco-chegada {
     width: 25%;
 }
