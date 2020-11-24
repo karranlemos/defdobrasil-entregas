@@ -41,7 +41,7 @@
     word-wrap: normal;
 }
 
-.table-general-container table tr {
+.table-general-container table tr:not(.not-clickable) {
     cursor: pointer;
 }
 

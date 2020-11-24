@@ -1,14 +1,18 @@
 import React from 'react';
+
 import './TablePages.css';
+import loadingImage from './icons/loading.gif';
 
 import Pagination from './Pagination';
 import MapRoute from '../../../components/MapRoute/MapRoute';
+import MessageBox from '../../../components/MessageBox/MessageBox';
 
 const API_ROUTE = '/api/entregas';
 
 export default class TablePages extends React.Component {
     state = {
         firstTime: true,
+        loading: true,
         currentPage: 0,
 
         totalPages: 0,
@@ -19,7 +23,9 @@ export default class TablePages extends React.Component {
 
         modalOpen: false,
         enderecoPartida: null,
-        enderecoChegada: null
+        enderecoChegada: null,
+
+        messageBox: null,
     };
 
     componentDidMount() {
@@ -28,8 +34,10 @@ export default class TablePages extends React.Component {
     
     render() {
         const modal = this.generateModal();
+        const messageBox = this.renderMessageBox();
         return (
             <div className="table-general-container">
+                {messageBox}
                 <small className="dica">
                     Clique na linha desejada para ver a rota entre os pontos de partida e chegada.
                 </small>
@@ -94,7 +102,16 @@ export default class TablePages extends React.Component {
 
 
     buildDataRows = () => {
-        const startLineNumber = (this.state.currentPage-1) * this.state.itemsPerPage;
+        if (this.state.loading)
+            return (
+                <tr className="not-clickable">
+                    <td colspan="4">
+                        <img src={loadingImage} alt="carregando..."/>
+                    </td>
+                </tr>
+            );
+        if (this.state.lines.length === 0)
+            return <tr className="not-clickable"><td colspan="4">Tabela vazia...</td></tr>;
 
         return this.state.lines.map((linha, i) => {
             return (
@@ -120,6 +137,37 @@ export default class TablePages extends React.Component {
     }
 
 
+    setError = (message) => {
+        this.setState({
+            loading: false,
+            messageBox: {
+                message: message,
+                type: 'failure'
+            }
+        })
+    }
+
+    unsetError = () => {
+        this.setState({
+            messageBox: null
+        });
+    }
+
+    renderMessageBox = () => {
+        if (!this.state.messageBox)
+            return null;
+        if (!this.state.messageBox.type || !this.state.messageBox.message)
+            return null;
+        if (!['success', 'failure'].includes(this.state.messageBox.type))
+            throw "[TablePages.renderMessageBox]: 'this.state.messageBox.type' must be 'success' or 'failure'...";
+
+        const message = this.state.messageBox.message;
+        const type = this.state.messageBox.type;
+
+        return <MessageBox type={type} message={message}/>;
+    }
+
+
 
     getPagePagination = (newPage) => {
         // A página não é rolada para cima sem o setTimeout.
@@ -133,18 +181,22 @@ export default class TablePages extends React.Component {
 
     getPage = (newPage=1) => {
         if (this.state.totalPages <= 0 && !this.state.firstTime) {
-            // TODO show error message
+            this.setError('Erro: não há dados para se carregar.');
             return;
         }
         if (newPage < 1 || newPage > Math.max(this.state.totalPages, 1)) {
-            // TODO show error message
+            this.setError('Página da tabela não existe.');
             return;
         }
 
         const request = new XMLHttpRequest();
         request.addEventListener('load', () => {
+            if (request.status === 500) {
+                this.setError('Não foi possível carregar a página da tabela devido a um erro interno. Tente novamente mais tarde.');
+                return;
+            }
             if (request.status !== 200) {
-                // TODO show error message
+                this.setError('Não foi possível carregar página da tabela. Tente novamente mais tarde.')
                 return;
             }
 
@@ -152,12 +204,12 @@ export default class TablePages extends React.Component {
                 var json = JSON.parse(request.responseText);
             }
             catch (err) {
-                // TODO show error message
+                this.setError('Erro de leitura dos dados da tabela. Tente novamente mais tarde.');
                 return;
             }
 
             if (!this.checkData(json)) {
-                // TODO show error message
+                this.setError('Erro de leutura dos dados da tabela. Tente novamente mais tarde.');
                 return;
             }
             
@@ -171,12 +223,15 @@ export default class TablePages extends React.Component {
     trocarPagina = (json) => {
         this.setState({
             firstTime: false,
+            loading: false,
             currentPage: json.currentPage,
 
             totalPages: json.totalPages,
             totalEntries: json.totalEntries,
             lines: json.lines
         });
+
+        this.unsetError();
     }
 
     checkData = (json) => {
@@ -187,7 +242,7 @@ export default class TablePages extends React.Component {
                 return false;
         }
 
-        if (!Array.isArray(json.lines) || json.lines.length === 0)
+        if (!Array.isArray(json.lines))
             return false;
 
         return true;
