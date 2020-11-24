@@ -56,8 +56,6 @@ router.get(
                     };
                 }));
 
-                console.log(linhasFinais);
-
                 return res.status(200).json({
                     currentPage: page,
                     totalEntries: totalEntries,

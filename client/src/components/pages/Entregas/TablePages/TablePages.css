@@ -29,6 +29,10 @@
     word-wrap: normal;
 }
 
+.table-container table tr {
+    cursor: pointer;
+}
+
 .table-container table tr:nth-child(odd) {
     background-color: rgb(240, 240, 240);
 }

@@ -19,7 +19,6 @@ const moduleHelpers = {
 
     checaPaginacaoNumeros(req, res, next) {
         var page = parseInt(req.query.page);
-        console.log(req.query);
         if (isNaN(page) || page <= 0)
             return res.status(400).json({
                 status: 400,

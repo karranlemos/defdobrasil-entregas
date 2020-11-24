@@ -2,6 +2,7 @@ import React from 'react';
 import './TablePages.css';
 
 import Pagination from './Pagination';
+import MapRoute from './MapRoute';
 
 const API_ROUTE = '/api/entregas';
 
@@ -15,6 +16,10 @@ export default class TablePages extends React.Component {
         lines: [],
 
         itemsPerPage: 10,
+
+        modalOpen: false,
+        enderecoPartida: null,
+        enderecoChegada: null
     };
 
     componentDidMount() {
@@ -22,15 +27,16 @@ export default class TablePages extends React.Component {
     }
     
     render() {
+        const modal = this.generateModal();
         return (
             <div className="table-container">
                 <table>
                     <thead>
                         <tr>
-                            <th class="col-nome-cliente">Nome</th>
-                            <th class="col-data-entrega">Data de Entrega</th>
-                            <th class="col-endereco-partida">Ponto de Partida</th>
-                            <th class="col-endereco-chegada">Ponto de Chegada</th>
+                            <th className="col-nome-cliente">Nome</th>
+                            <th className="col-data-entrega">Data de Entrega</th>
+                            <th className="col-endereco-partida">Ponto de Partida</th>
+                            <th className="col-endereco-chegada">Ponto de Chegada</th>
                         </tr>
                     </thead>
 
@@ -44,16 +50,53 @@ export default class TablePages extends React.Component {
                     currentPage={this.state.currentPage}
                     getPageCallback={this.getPage}
                 />
+                {modal}
             </div>
         );
     }
+
+    openModal = (enderecoPartida, enderecoChegada) => {
+        this.setState({
+            modalOpen: true,
+            enderecoPartida: enderecoPartida,
+            enderecoChegada: enderecoChegada
+        });
+    };
+
+    closeModal = () => {
+        this.setState({
+            modalOpen: false,
+            enderecoPartida: null,
+            enderecoChegada: null
+        });
+    };
+
+    generateModal = () => {
+        if (!this.state.modalOpen)
+            return null;
+        
+        return (
+            <MapRoute
+                origin={this.state.enderecoPartida}
+                destination={this.state.enderecoChegada}
+                closeModal={this.closeModal}
+            />
+        );
+    };
+
+
+
+
 
     buildDataRows = () => {
         const startLineNumber = (this.state.currentPage-1) * this.state.itemsPerPage;
 
         return this.state.lines.map((linha, i) => {
             return (
-                <tr>
+                <tr
+                    onClick={() => this.openModal(linha.enderecoPartida, linha.enderecoChegada)}
+                    title="Clique para ver a rota entre o ponto de partida e o de destino."
+                >
                     <td>
                         {linha.nomeCliente}
                     </td>

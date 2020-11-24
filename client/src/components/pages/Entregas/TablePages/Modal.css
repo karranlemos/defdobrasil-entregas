@@ -1,0 +1,39 @@
+.modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    z-index: 100002;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background: rgba(0, 0, 0, .7);
+}
+
+.modal-container .modal-popup {
+    display: grid;
+    grid-template-rows: auto 1fr;
+
+    max-width: 800px;
+    width: 100%;
+    min-height: 300px;
+
+    background-color: rgb(236, 236, 236);
+}
+
+.modal-container .modal-popup .modal-header div.close {
+    height: 50px;
+    width: 50px;
+
+    background-image: url('./icons/Multiplication_Sign-black.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+
+    margin-left: auto;
+
+    cursor: pointer;
+}
