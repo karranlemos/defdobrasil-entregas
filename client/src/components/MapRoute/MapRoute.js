@@ -20,7 +20,7 @@ export default class MapRoute extends React.Component {
         ;
         
         return this.generateModal(
-            <iframe class="modal-map"
+            <iframe class="modal-map" title="Google Maps - Rotas de Entrega"
                 frameborder="0"
                 src={api_url}
                 allowfullscreen>

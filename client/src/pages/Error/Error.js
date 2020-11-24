@@ -4,7 +4,7 @@ import './Error.css';
 import Layout from '../layout/Layout';
 
 
-export default (props) => (
+const Error = (props) => (
     <Layout>
         <div id="pagina-erro" className="caixa-pequena">
             <h1>Erro</h1>
@@ -12,3 +12,5 @@ export default (props) => (
         </div>
     </Layout>
 );
+
+export default Error;

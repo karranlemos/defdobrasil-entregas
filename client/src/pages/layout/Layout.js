@@ -3,7 +3,7 @@ import React from 'react';
 import Header from './inc/Header';
 import Footer from './inc/Footer';
 
-export default (props) => (
+const Layout = (props) => (
     <div className="content">
         <Header/>
         <main className="main">
@@ -12,3 +12,5 @@ export default (props) => (
         <Footer/>
     </div>
 );
+
+export default Layout;

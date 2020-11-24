@@ -5,7 +5,7 @@ import Layout from '../layout/Layout';
 
 import TablePages from './TablePages/TablePages';
 
-export default () => (
+const Entregas = () => (
     <Layout>
         <div id="entregas" className="container">
             <h1>Entregas</h1>
@@ -13,3 +13,5 @@ export default () => (
         </div>
     </Layout>
 );
+
+export default Entregas;

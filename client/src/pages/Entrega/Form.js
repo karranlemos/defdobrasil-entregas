@@ -91,14 +91,15 @@ export default class Form extends React.Component {
                 return;
             }
             
+            var errorMessage;
             try {
                 var json = JSON.parse(request.responseText);
                 if (!json.errorMessage)
-                    throw 'Usa mensagem do catch';
-                var errorMessage = json.errorMessage;
+                    throw new Error('Usa mensagem do catch');
+                errorMessage = json.errorMessage;
             }
             catch (err) {
-                var errorMessage = "Não foi possível adicionar a entrega...";
+                errorMessage = "Não foi possível adicionar a entrega...";
             }
 
             this.setState({

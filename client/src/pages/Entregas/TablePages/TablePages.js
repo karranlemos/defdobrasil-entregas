@@ -159,7 +159,7 @@ export default class TablePages extends React.Component {
         if (!this.state.messageBox.type || !this.state.messageBox.message)
             return null;
         if (!['success', 'failure'].includes(this.state.messageBox.type))
-            throw "[TablePages.renderMessageBox]: 'this.state.messageBox.type' must be 'success' or 'failure'...";
+            throw new Error("[TablePages.renderMessageBox]: 'this.state.messageBox.type' must be 'success' or 'failure'...");
 
         const message = this.state.messageBox.message;
         const type = this.state.messageBox.type;

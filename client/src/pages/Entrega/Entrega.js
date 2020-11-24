@@ -4,7 +4,7 @@ import './Entrega.css';
 import Layout from '../layout/Layout';
 import Form from './Form';
 
-export default () => (
+const Entrega = () => (
     <Layout>
         <div className="container">
             <div className="caixa-pequena">
@@ -14,3 +14,5 @@ export default () => (
         </div>
     </Layout>
 );
+
+export default Entrega;
