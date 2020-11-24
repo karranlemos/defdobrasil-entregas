@@ -1,0 +1,26 @@
+{
+  "short_name": "Entregas Já",
+  "name": "Entregas Já",
+  "description": "Site protótipo para guardar as entregas feitas no Entregas Já.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "favicon-192x192.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon-512x512.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#86552a",
+  "background_color": "#f5f5f5"
+}
