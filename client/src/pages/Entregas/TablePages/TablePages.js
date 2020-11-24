@@ -2,7 +2,7 @@ import React from 'react';
 import './TablePages.css';
 
 import Pagination from './Pagination';
-import MapRoute from './MapRoute';
+import MapRoute from '../../../components/MapRoute/MapRoute';
 
 const API_ROUTE = '/api/entregas';
 

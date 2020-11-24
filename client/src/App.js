@@ -1,9 +1,9 @@
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import './main-css/App.css';
 
-import Entrega from './components/pages/Entrega/Entrega';
-import Entregas from './components/pages/Entregas/Entregas';
-import Error from './components/pages/Error';
+import Entrega from './pages/Entrega/Entrega';
+import Entregas from './pages/Entregas/Entregas';
+import Error from './pages/Error';
 
 function App() {
   return (

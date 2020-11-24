@@ -1,7 +1,7 @@
 import React from 'react';
 import './MapRoute.css';
 
-import Modal from './Modal';
+import Modal from '../Modal/Modal';
 
 const GOOGLE_MAPS_API_KEY = 'AIzaSyCvyAUwN0gEzXjFRd1QCa17zquhY1qmXNg';
 

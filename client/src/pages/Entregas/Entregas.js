@@ -3,7 +3,6 @@ import './Entregas.css';
 
 import Layout from '../layout/Layout';
 
-import './TablePages/TablePages';
 import TablePages from './TablePages/TablePages';
 
 export default () => (
