@@ -30,6 +30,9 @@ export default class TablePages extends React.Component {
         const modal = this.generateModal();
         return (
             <div className="table-general-container">
+                <small className="dica">
+                    Clique na linha desejada para ver a rota entre os pontos de partida e chegada.
+                </small>
                 <div className="table-tag-container">
                     <table>
                         <thead>

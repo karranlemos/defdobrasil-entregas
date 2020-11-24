@@ -8,6 +8,11 @@
     margin: 10px;
 }
 
+.table-general-container small.dica {
+    font-size: 15px;
+    margin: 10px;
+}
+
 .table-general-container .table-tag-container {
     max-width: calc(100vw - 20px);
     overflow-x: auto;
